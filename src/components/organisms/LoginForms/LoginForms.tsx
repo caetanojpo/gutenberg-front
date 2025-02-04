@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import LoginLoading from "../LoginLoading/LoginLoading";
-import { LoginInput } from "@/components/molecules/Inputs/LoginInput";
+import { LoginInput } from "@/components/atoms/Inputs/LoginInput";
 import PasswordIcon from "@/assets/icons/password.svg";
 import UserIcon from "@/assets/icons/user.svg";
 

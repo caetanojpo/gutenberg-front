@@ -11,11 +11,11 @@ export default function Header() {
         <MobileMenu />
       </div>
       <div className="flex w-full gap-2 items-center">
-        <h3 className="flex text-[1.2rem] text-primary">
+        <h3 className="flex text-[1.4rem] text-primary">
           <span className="hidden lg:flex mr-1">Hello {"email"}.</span> Nice to
           see you here!{" "}
         </h3>
-        <SmileIcon className="w-7 h-7 text-secondary" />
+        <SmileIcon className="w-7 h-7 lg:w-10 lg:h-10 text-secondary" />
       </div>
       <div className="flex">
         <Link href="/">

@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function SideMenu() {
   const navigationList: NavigationItem[] = [
     {
-      icon: <DashboardIcon className="w-8 h-8 text-secondary" />,
+      icon: <DashboardIcon className="w-10 h-10 text-secondary" />,
       text: "Dashboard",
       link: "",
     },
@@ -23,9 +23,9 @@ export default function SideMenu() {
             {navigationList.map(
               ({ icon, text, link }: NavigationItem, index: number) => (
                 <Link key={index} href={link}>
-                  <li className="flex gap-4 items-center px-8 hover:bg-primary2 py-4 cursor-pointer">
+                  <li className="flex gap-4 items-center px-8 hover:bg-primary2 py-4 lg:py-8 cursor-pointer">
                     <div>{icon}</div>
-                    <span className="text-primary text-[1.6rem]">{text}</span>
+                    <span className="text-primary text-[1.8rem]">{text}</span>
                   </li>
                 </Link>
               )

@@ -1,33 +1,19 @@
 import SideMenu from "@/components/organisms/SideMenu/SideMenu";
 import React from "react";
 import Header from "@/components/organisms/Header/Header";
+import BookSearch from "@/components/molecules/BookSearch/BookSearch";
+import Book from "@/components/organisms/Book/Book";
+import BookLog from "@/components/organisms/BookLog/BookLog";
 
 export default function page() {
   return (
-    <main className="h-screen w-screen flex">
+    <main className="h-full min-h-screen w-screen flex ">
       <SideMenu />
       <div className="flex flex-col w-full h-full">
         <Header />
-        {/* SEARCH BAR */}
-        <div>
-          <div>INPUT</div>
-          <div>BUTTON</div>
-        </div>
-        {/* BOOK LOAD */}
-        <div>
-          <div>
-            <div>BOOK IMAGE</div>
-            <div>
-              <ul>BOOK INFOS</ul>
-            </div>
-          </div>
-          <div>ACTIONS</div>
-        </div>
-        {/* LAST SEEN */}
-        <div>
-          <div>DIVIDER</div>
-          <div>BOOKS GRID</div>
-        </div>
+        <BookSearch />
+        <Book />
+        <BookLog />
       </div>
     </main>
   );
