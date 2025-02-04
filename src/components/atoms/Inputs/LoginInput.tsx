@@ -56,8 +56,8 @@ export const LoginInput: React.FC<IFormsInput> = ({
       >
         {label}
       </label>
-      <div className="relative mb-6 flex">
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+      <div className="relative flex">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
           {icon}
         </div>
         <input
@@ -71,17 +71,21 @@ export const LoginInput: React.FC<IFormsInput> = ({
           onChange={onChange}
           disabled={loading}
         />
-        <div className="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
-          {originalType === "password" && !showPass ? (
-            <ClosedEyeIcon
-              className="w-[1.6rem] h-[1.6rem] text-secondary cursor-pointer"
-              onClick={changeViewPass}
-            />
-          ) : originalType === "password" ? (
-            <EyeIcon
-              className={`w-[1.6rem] h-[1.6rem] ${error ? "text-highlight" : "text-secondary"} cursor-pointer`}
-              onClick={changeViewPass}
-            />
+        <div className="absolute inset-y-0 end-0 flex items-center pe-2 cursor-pointer">
+          {originalType === "password" ? (
+            <div>
+              {showPass ? (
+                <ClosedEyeIcon
+                  className="w-[1.6rem] h-[1.6rem] text-secondary cursor-pointer"
+                  onClick={changeViewPass}
+                />
+              ) : (
+                <EyeIcon
+                  className={`w-[1.6rem] h-[1.6rem] ${error ? "text-highlight" : "text-secondary"} cursor-pointer`}
+                  onClick={changeViewPass}
+                />
+              )}
+            </div>
           ) : (
             ""
           )}
