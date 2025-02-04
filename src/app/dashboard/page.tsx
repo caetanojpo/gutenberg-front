@@ -1,16 +1,13 @@
 import SideMenu from "@/components/organisms/SideMenu/SideMenu";
 import React from "react";
+import Header from "@/components/organisms/Header/Header";
 
 export default function page() {
   return (
     <main className="h-screen w-screen flex">
       <SideMenu />
-      <div>
-        {/* HEADER */}
-        <div>
-          <div>GREETINGS</div>
-          <div>PROFILE ICON</div>
-        </div>
+      <div className="flex flex-col w-full h-full">
+        <Header />
         {/* SEARCH BAR */}
         <div>
           <div>INPUT</div>
