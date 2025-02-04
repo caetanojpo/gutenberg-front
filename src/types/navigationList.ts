@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type SocialMediaItem = {
+export type NavigationItem = {
   icon?: ReactNode;
   text: string;
   link: string;
