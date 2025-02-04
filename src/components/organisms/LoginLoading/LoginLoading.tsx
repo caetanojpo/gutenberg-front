@@ -42,7 +42,10 @@ const LoginLoading: React.FC<ILoginLoading> = ({ state = true }) => {
   }, []);
 
   return (
-    <main className="w-screen h-screen bg-primary flex items-center justify-center absolute">
+    <main
+      id="login-loading"
+      className="w-dvw h-full bg-primary flex items-center justify-center absolute z-50"
+    >
       <section className="flex h-full w-[80%] lg:w-1/2 items-center justify-center flex-col text-center">
         <div className="h-[10%] w-full relative mb-10">
           {state ? (
