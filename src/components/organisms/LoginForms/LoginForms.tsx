@@ -79,7 +79,7 @@ export default function LoginForms() {
     <>
       <form
         method="submit"
-        className="flex flex-col justify-around gap-10 bg-red-400 w-[80%]"
+        className="flex flex-col justify-around gap-10 w-[80%] lg:w-[50%]"
         onSubmit={submitLogin}
       >
         <div className="h-full w-full text-primary text-[2.4rem] font-light">

@@ -40,9 +40,9 @@ export const LoginInput: React.FC<IFormsInput> = ({
 
   const changeViewPass = () => {
     if (!showPass) {
-      setType("password");
-    } else {
       setType("text");
+    } else {
+      setType("password");
     }
 
     setShowPass((prev) => !prev);
@@ -74,7 +74,7 @@ export const LoginInput: React.FC<IFormsInput> = ({
         <div className="absolute inset-y-0 end-0 flex items-center pe-2 cursor-pointer">
           {originalType === "password" ? (
             <div>
-              {showPass ? (
+              {!showPass ? (
                 <ClosedEyeIcon
                   className="w-[2rem] h-[2rem] lg:w-[1.6rem] lg:h-[1.6rem] text-secondary cursor-pointer"
                   onClick={changeViewPass}
