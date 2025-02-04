@@ -9,12 +9,12 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        logo: "/logo.png",
-        logoSecondary: "/logo-secondary.png",
-        logoWhite: "/logo-white.png",
-        logoFull: "/full-logo.png",
-        dashboardSearchBg: "/dashboard-search-bg.png",
-        loginBg: "/login-bg.png",
+        logo: "url(/logo.png)",
+        logoSecondary: "url(/logo-secondary.png)",
+        logoWhite: "url(/logo-white.png)",
+        logoFull: "url(/full-logo.png)",
+        dashboardSearchBg: "url(/dashboard-search-bg.png)",
+        loginBg: "url(/login-bg.png)",
       },
       colors: {
         primary: "#3A3F5F",
