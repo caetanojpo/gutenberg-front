@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "auto-fit": "repeat(auto-fit, minmax(150px, 1fr))",
+      },
       backgroundImage: {
         logo: "url(/logo.png)",
         logoSecondary: "url(/logo-secondary.png)",

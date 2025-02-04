@@ -107,6 +107,11 @@ section {
 body {
   line-height: 1;
 }
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
 ol,
 ul {
   list-style: none;
