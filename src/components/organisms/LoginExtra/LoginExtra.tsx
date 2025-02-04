@@ -5,7 +5,7 @@ import React from "react";
 
 export default function LoginExtra() {
   return (
-    <div className="hidden lg:flex h-screen w-[45%] bg-loginBg bg-cover bg-no-repeat bg-right flex-col justify-between p-20 text-white">
+    <div className="hidden sm:flex h-screen w-[45%] bg-loginBg bg-cover bg-no-repeat bg-right flex-col justify-between p-20 text-white">
       <div className="w-full flex flex-col items-middle justify-center">
         <div className="">
           <Image
