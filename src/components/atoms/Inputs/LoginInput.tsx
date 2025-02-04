@@ -1,7 +1,7 @@
 "use client";
-
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
+import EyeIcon from "@/assets/icons/eye.svg";
+import ClosedEyeIcon from "@/assets/icons/eye-closed.svg";
 
 interface IFormsInput {
   label?: string;
@@ -10,9 +10,9 @@ interface IFormsInput {
   isRequired?: boolean;
   placeholder?: string;
   value?: string;
-  textColor?: string;
   state?: boolean;
   error?: boolean;
+  icon?: ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -22,10 +22,10 @@ export const LoginInput: React.FC<IFormsInput> = ({
   propsType = "text",
   isRequired = false,
   placeholder = "",
-  textColor = "",
   error,
   value,
   state = false,
+  icon,
   onChange,
 }) => {
   const [showPass, setShowPass] = useState(false);
@@ -38,7 +38,6 @@ export const LoginInput: React.FC<IFormsInput> = ({
     setLoading(state);
   }, [state]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const changeViewPass = () => {
     if (!showPass) {
       setType("password");
@@ -50,41 +49,44 @@ export const LoginInput: React.FC<IFormsInput> = ({
   };
 
   return (
-    <label
-      className={`flex flex-col text-${
-        !textColor ? "[black]" : textColor
-      } w-full gap-1 lg:text-[1.4rem]`}
-    >
-      {label}
-      <div
-        className={`flex w-full shadow-inner ${error ? `border-2 border-solid border-danger` : ""} ${
-          loading ? "bg-suport-100" : "bg-[#F5FCFF]"
-        }  items-center rounded-[2px]  text-black`}
+    <>
+      <label
+        htmlFor={name}
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       >
+        {label}
+      </label>
+      <div className="relative mb-6 flex">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+          {icon}
+        </div>
         <input
-          name={name}
           type={type}
+          id={name}
           required={isRequired}
-          placeholder={placeholder}
+          name={name}
           value={value}
-          className={`w-full p-3 border-b-4 border-solid border-primary  ${
-            loading ? "bg-suport-100" : "bg-[#F5FCFF]"
-          } focus:outline-0, text-[${textColor}]`}
+          className={`${error ? "bg-red-300" : "bg-gray-50"} border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary`}
+          placeholder={placeholder}
           onChange={onChange}
           disabled={loading}
         />
-        {originalType === "password" ? (
-          //   <Icon
-          //     className="text-primary-0 text-[1.6rem] mr-2 lg:text-[2.4rem] cursor-pointer "
-          //     icon={!showPass ? "mdi:show" : "mdi:hide"}
-          //     color={error ? "#DE2121" : "#1FADE1"}
-          //     onClick={changeViewPass}
-          //   />
-          <Image src="/icons/eye.svg" alt="" width={24} height={24} />
-        ) : (
-          ""
-        )}
+        <div className="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
+          {originalType === "password" && !showPass ? (
+            <ClosedEyeIcon
+              className="w-[1.6rem] h-[1.6rem] text-secondary cursor-pointer"
+              onClick={changeViewPass}
+            />
+          ) : originalType === "password" ? (
+            <EyeIcon
+              className={`w-[1.6rem] h-[1.6rem] ${error ? "text-highlight" : "text-secondary"} cursor-pointer`}
+              onClick={changeViewPass}
+            />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
-    </label>
+    </>
   );
 };
