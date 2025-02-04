@@ -1,11 +1,30 @@
+"use client";
+
 import PagesList from "@/components/molecules/PagesList/PagesList";
 import SocialMediaList from "@/components/molecules/SocialMediaList/SocialMediaList";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function LoginExtra() {
+  const [exists, setExists] = useState(false);
+
+  useEffect(() => {
+    const targetId = "#login-loading";
+    const observer = new MutationObserver(() => {
+      setExists(!!document.querySelector(targetId));
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    setExists(!!document.querySelector(targetId));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="hidden sm:flex h-screen w-[45%] bg-loginBg bg-cover bg-no-repeat bg-right flex-col justify-between p-20 text-white">
+    <div
+      className={`hidden ${exists ? "hidden" : "lg:flex"}  h-screen w-[45%] bg-loginBg bg-cover bg-no-repeat bg-right flex-col justify-between p-20 text-white z-0`}
+    >
       <div className="w-full flex flex-col items-middle justify-center">
         <div className="">
           <Image
