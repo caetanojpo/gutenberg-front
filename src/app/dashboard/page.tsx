@@ -1,13 +1,10 @@
+import SideMenu from "@/components/organisms/SideMenu/SideMenu";
 import React from "react";
 
 export default function page() {
   return (
     <main className="h-screen w-screen flex">
-      {/* MENU LATERAL */}
-      <div>
-        <div>LOGO</div>
-        <div>NAVIGATION</div>
-      </div>
+      <SideMenu />
       <div>
         {/* HEADER */}
         <div>
