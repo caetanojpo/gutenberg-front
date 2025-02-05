@@ -52,7 +52,7 @@ export const LoginInput: React.FC<IFormsInput> = ({
     <>
       <label
         htmlFor={name}
-        className="block mb-2 text-md lg:text-sm font-medium text-gray-900 dark:text-white"
+        className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
       >
         {label}
       </label>
@@ -66,7 +66,7 @@ export const LoginInput: React.FC<IFormsInput> = ({
           required={isRequired}
           name={name}
           value={value}
-          className={`${error ? "bg-red-300" : "bg-gray-50"} border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full  ps-12 lg:ps-10 p-4 lg:p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary text-[1.5rem] lg:text-[1rem]`}
+          className={`${error ? "bg-red-300" : "bg-gray-50"} border border-gray-300 text-gray-900  rounded-lg focus:ring-primary focus:border-primary block w-full  ps-12  p-4  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary text-[1.5rem] lg:text-[1.8rem]`}
           placeholder={placeholder}
           onChange={onChange}
           disabled={loading}
@@ -76,12 +76,12 @@ export const LoginInput: React.FC<IFormsInput> = ({
             <div>
               {!showPass ? (
                 <ClosedEyeIcon
-                  className="w-[2rem] h-[2rem] lg:w-[1.6rem] lg:h-[1.6rem] text-secondary cursor-pointer"
+                  className="w-[2rem] h-[2rem] text-secondary cursor-pointer"
                   onClick={changeViewPass}
                 />
               ) : (
                 <EyeIcon
-                  className={`w-[2rem] h-[2rem] lg:w-[1.6rem] lg:h-[1.6rem] ${error ? "text-highlight" : "text-secondary"} cursor-pointer`}
+                  className={`w-[2rem] h-[2rem] ${error ? "text-highlight" : "text-secondary"} cursor-pointer`}
                   onClick={changeViewPass}
                 />
               )}

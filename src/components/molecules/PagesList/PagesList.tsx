@@ -3,7 +3,7 @@ import React from "react";
 
 export default function PagesList() {
   return (
-    <div className="w-full flex items-middle justify-center gap-10 text-[1.4rem]">
+    <div className="w-full flex items-middle justify-center gap-10 text-[1.6rem]">
       <Link href="" className="hover:text-highlight">
         <p>contact</p>
       </Link>

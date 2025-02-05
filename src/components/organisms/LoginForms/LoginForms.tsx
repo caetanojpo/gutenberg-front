@@ -91,9 +91,7 @@ export default function LoginForms() {
               name="email"
               label="Email"
               isRequired
-              icon={
-                <UserIcon className="w-8 h-8 lg:w-6 lg:h-6 text-secondary" />
-              }
+              icon={<UserIcon className="w-8 h-8  text-secondary" />}
               propsType="text"
               value={formData.email}
               onChange={handleInputChange}
@@ -105,9 +103,7 @@ export default function LoginForms() {
               name="password"
               label="Password"
               isRequired
-              icon={
-                <PasswordIcon className="w-8 h-8 lg:w-6 lg:h-6 text-secondary" />
-              }
+              icon={<PasswordIcon className="w-8 h-8  text-secondary" />}
               propsType="password"
               placeholder="********"
               onChange={handleInputChange}
@@ -118,7 +114,7 @@ export default function LoginForms() {
         <div className="flex justify-center items-center w-full ">
           <input
             type="submit"
-            className="bg-primary text-white text-[2.4rem] lg:text-[2rem] rounded-lg p-5 lg:p-3 w-full hover:bg-secondary hover:text-primary transition-all delay-[0.1s] lg:w-[50%] cursor-pointer"
+            className="bg-primary text-white text-[2.4rem]  rounded-lg p-5  w-full hover:bg-secondary hover:text-primary transition-all delay-[0.1s] lg:w-[30%] cursor-pointer"
             value={`Login`}
           />
         </div>
