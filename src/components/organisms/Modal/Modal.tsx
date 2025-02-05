@@ -58,12 +58,6 @@ const Modal: React.FC<ModalProps> = ({
           >
             Cancel
           </button>
-          <button
-            onClick={onClose}
-            className="ml-3 px-5 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800"
-          >
-            {actionText}
-          </button>
         </div>
       </div>
     </div>
