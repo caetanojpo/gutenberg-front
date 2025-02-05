@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    domains: ["www.gutenberg.org"],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
