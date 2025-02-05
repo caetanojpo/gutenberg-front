@@ -41,7 +41,6 @@ export default function LoginForms() {
       });
 
       const authorized = await authResponse.json();
-      console.log(authorized);
       const status = [200, 201];
       if (!status.includes(authResponse.status)) {
         setError({ state: true, message: authorized.message });

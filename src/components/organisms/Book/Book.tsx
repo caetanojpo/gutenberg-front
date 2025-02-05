@@ -41,8 +41,6 @@ export default function Book() {
         return;
       }
 
-      console.log(JSON.stringify(response));
-
       setModalOpen({
         state: true,
         title: book?.title ?? "",

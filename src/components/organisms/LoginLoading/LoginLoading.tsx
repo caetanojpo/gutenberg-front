@@ -27,9 +27,7 @@ const LoginLoading: React.FC<ILoginLoading> = ({ state = true }) => {
 
   useEffect(() => {
     const random = Math.random();
-    console.log(random);
     const randomIndex = Math.floor(random * famousQuotes.length);
-    console.log(randomIndex);
     setRandomPhrase(famousQuotes[randomIndex]);
     const interval = setInterval(() => {
       setProgress((prevProgress) => {

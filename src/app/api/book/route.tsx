@@ -10,7 +10,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   const cookieStore = await cookies();
   const token = await cookieStore.get("Authorization");
 
-  console.log(`${process.env.NEXT_PUBLIC_DEV_URL}/gutenberg/${id}`);
   try {
     const gutenbergRequest = await fetch(
       `${process.env.NEXT_PUBLIC_DEV_URL}/gutenberg/${id}`,
@@ -24,14 +23,11 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     const gutenbergResponse = await gutenbergRequest.json();
 
-    console.log(JSON.stringify(gutenbergResponse));
     const statusCode = gutenbergRequest.status;
-    console.log("real status: " + statusCode);
 
     const status = [200, 201];
 
     const returnResponse = { statusCode, ...gutenbergResponse };
-    console.log(returnResponse.statusCode);
 
     if (
       !gutenbergResponse.message.includes(
@@ -59,8 +55,6 @@ export async function POST(request: Request): Promise<NextResponse> {
       }
     );
     const bookResponse = await bookRequest.json();
-
-    console.log(JSON.stringify(bookResponse));
 
     return await NextResponse.json(bookResponse, {
       headers: {

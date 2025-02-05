@@ -15,9 +15,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   const cookieStore = await cookies();
   const token = await cookieStore.get("Authorization");
 
-  console.log(JSON.stringify(body));
-
-  console.log(`${process.env.NEXT_PUBLIC_DEV_URL}/llm/${id}`);
   try {
     const llmRequest = await fetch(`${process.env.NEXT_PUBLIC_DEV_URL}/llm`, {
       method: "POST",
@@ -29,13 +26,6 @@ export async function POST(request: Request): Promise<NextResponse> {
     });
 
     const llmResponse = await llmRequest.json();
-
-    console.log(JSON.stringify(llmResponse));
-    const statusCode = llmRequest.status;
-    console.log("real status: " + statusCode);
-
-    const returnResponse = { statusCode, ...llmResponse };
-    console.log(returnResponse.statusCode);
 
     return await NextResponse.json(llmResponse, {
       headers: {

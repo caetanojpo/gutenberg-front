@@ -44,7 +44,6 @@ export async function POST(request: Request): Promise<NextResponse> {
     const maxAge = 3 * 24 * 60 * 60;
 
     const loginData = authResponse;
-    console.log(JSON.stringify(loginData));
     await cookieStore.set("Authorization", loginData.data, {
       secure: true,
       maxAge: maxAge,
@@ -61,7 +60,6 @@ export async function POST(request: Request): Promise<NextResponse> {
     );
     const userResponse = await userRequest.json();
 
-    console.log(JSON.stringify(userResponse.data));
     loginData.statusCode = returnResponse.statusCode;
     await cookieStore.set("user", JSON.stringify(userResponse.data), {
       secure: true,

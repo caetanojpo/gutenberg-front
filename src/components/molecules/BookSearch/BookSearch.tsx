@@ -9,7 +9,7 @@ export default function BookSearch() {
   const [formData, setFormData] = useState({
     id: "",
   });
-  const { book, setBook } = useBook();
+  const { setBook } = useBook();
   const { addBook } = useBooksStorage();
   const [requestInProgress, setRequestInProgress] = useState(false);
 
@@ -48,7 +48,6 @@ export default function BookSearch() {
         downloads: bookers.metadata.downloads,
         title: bookers.title,
       });
-      console.log(book);
     } catch (error) {
       console.log(error);
     }
