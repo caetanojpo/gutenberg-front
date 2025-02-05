@@ -11,6 +11,7 @@ export default function BookSearch() {
   });
   const { book, setBook } = useBook();
   const { addBook } = useBooksStorage();
+  const [requestInProgress, setRequestInProgress] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -19,7 +20,8 @@ export default function BookSearch() {
       [name]: value,
     }));
   };
-  const submitLogin = async (event: React.FormEvent) => {
+  const bookFetch = async (event: React.FormEvent) => {
+    setRequestInProgress(true);
     try {
       event.preventDefault();
       const bookResponse = await fetch(`/api/book`, {
@@ -34,6 +36,7 @@ export default function BookSearch() {
         setFormData({
           id: "",
         });
+        setRequestInProgress(false);
         return;
       }
 
@@ -50,6 +53,8 @@ export default function BookSearch() {
       console.log(error);
     }
 
+    setRequestInProgress(false);
+
     setFormData({
       id: "",
     });
@@ -57,7 +62,7 @@ export default function BookSearch() {
   return (
     <form
       className="flex flex-col lg:flex-row h-fit lg:min-h-[200px] items-center justify-center gap-6 lg:bg-dashboardSearchBg bg-cover bg-no-repeat bg-center px-8 py-10 lg:py-0 lg:px-20"
-      onSubmit={submitLogin}
+      onSubmit={bookFetch}
     >
       <div className="flex w-full flex-1">
         <DashboardInput
@@ -70,9 +75,10 @@ export default function BookSearch() {
       </div>
       <div className="flex w-full lg:w-fit">
         <input
+          disabled={requestInProgress}
           type="submit"
-          className="bg-secondary w-full lg:w-fit font-bold text-white text-[1.6rem] rounded-full p-5 lg:py-6 lg:px-10  hover:bg-primary2 transition-all delay-[0.1s] cursor-pointer"
-          value={`SEARCH`}
+          className="bg-secondary w-full lg:w-fit font-bold text-white text-[1.6rem] rounded-full p-5 lg:py-6 lg:px-10  hover:bg-primary2 transition-all delay-[0.1s] cursor-pointer disabled:bg-gray-500 disabled:cursor-not-allowed"
+          value={requestInProgress ? "..." : `SEARCH`}
         />
       </div>
     </form>

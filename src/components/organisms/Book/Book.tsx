@@ -13,6 +13,47 @@ export default function Book() {
     actionText: "",
     text: "",
   });
+  const [requestInProgress, setRequestInProgress] = useState(false);
+
+  const doLLMRequest = async (gutenbergId: string, action: string) => {
+    setRequestInProgress(true);
+    try {
+      const requestData = {
+        id: gutenbergId,
+        action: action,
+      };
+
+      const bookResponse = await fetch(`/api/llm`, {
+        method: "POST",
+        body: JSON.stringify(requestData),
+      });
+
+      const response = await bookResponse.json();
+      const status = [200, 201];
+      if (!status.includes(bookResponse.status)) {
+        setModalOpen({
+          state: false,
+          title: "",
+          actionText: "",
+          text: "",
+        });
+        setRequestInProgress(false);
+        return;
+      }
+
+      console.log(JSON.stringify(response));
+
+      setModalOpen({
+        state: true,
+        title: book?.title ?? "",
+        actionText: action,
+        text: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setRequestInProgress(false);
+  };
 
   return (
     <>
@@ -42,7 +83,8 @@ export default function Book() {
         </div>
         <div className="flex  w-full lg:w-fit flex-col justify-between h-full gap-6">
           <button
-            className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]"
+            disabled={requestInProgress}
+            className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem] disabled:bg-gray-500 disabled:cursor-not-allowed"
             onClick={() =>
               setModalOpen({
                 state: true,
@@ -52,17 +94,37 @@ export default function Book() {
               })
             }
           >
-            <span className="">CONTENT</span>
+            <span className="">
+              {requestInProgress ? "LOADING..." : "CONTEXT"}
+            </span>
           </button>
-          {/* <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
-            <span className="">CONTENT</span>
+          <button
+            disabled={requestInProgress}
+            className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem] disabled:bg-gray-500 disabled:cursor-not-allowed"
+            onClick={() => doLLMRequest(book?.gutenbergId ?? "", "KEYWORDS")}
+          >
+            <span className="">
+              {requestInProgress ? "LOADING..." : "KEYWORDS"}
+            </span>
           </button>
-          <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
-            <span className="">CONTENT</span>
+          <button
+            disabled={requestInProgress}
+            className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem] disabled:bg-gray-500 disabled:cursor-not-allowed"
+            onClick={() => doLLMRequest(book?.gutenbergId ?? "", "SUMMARY")}
+          >
+            <span className="">
+              {requestInProgress ? "LOADING..." : "SUMMARY"}
+            </span>
           </button>
-          <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
-            <span className="">CONTENT</span>
-          </button> */}
+          <button
+            disabled={requestInProgress}
+            className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem] disabled:bg-gray-500 disabled:cursor-not-allowed"
+            onClick={() => doLLMRequest(book?.gutenbergId ?? "", "SENTIMENT")}
+          >
+            <span className="">
+              {requestInProgress ? "LOADING..." : "SENTIMENT"}
+            </span>
+          </button>
         </div>
       </div>
 

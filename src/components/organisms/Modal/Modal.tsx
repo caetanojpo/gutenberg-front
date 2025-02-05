@@ -46,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
         {/* Body */}
         <div className=" text-primary dark:text-gray-400 p-4 lg:p-10">
           <div className="flex border-[1px] border-solid border-gray-300 p-6 rounded-xl overflow-x-auto">
-            <p className="text-[1.2rem] ">{text}</p>
+            <p className="text-[1.4rem] ">{text}</p>
           </div>
         </div>
 
