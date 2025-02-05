@@ -25,14 +25,12 @@ export async function POST(request: Request): Promise<NextResponse> {
       }
     );
 
-    const createResponse = await loginRequest.json();
-    const statusCode = createResponse.statusCode
-      ? createResponse.statusCode
-      : 200;
+    const authResponse = await loginRequest.json();
+    const statusCode = loginRequest.status;
 
     const status = [200, 201];
 
-    const returnResponse = { statusCode, ...createResponse };
+    const returnResponse = { statusCode, ...authResponse };
     if (!status.includes(returnResponse.statusCode)) {
       return await NextResponse.json(returnResponse, {
         headers: {
@@ -46,7 +44,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     const cookieStore = await cookies();
     const maxAge = 3 * 24 * 60 * 60;
 
-    const loginData = createResponse;
+    const loginData = authResponse;
     console.log(JSON.stringify(loginData));
     await cookieStore.set("Authorization", loginData.data, {
       secure: true,
