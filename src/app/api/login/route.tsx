@@ -11,8 +11,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     email: email,
     password: password,
   };
-  console.log(body);
-  console.log(`${process.env.NEXT_PUBLIC_DEV_URL}/auth/login`);
+
   try {
     const loginRequest = await fetch(
       `${process.env.NEXT_PUBLIC_DEV_URL}/auth/login`,
