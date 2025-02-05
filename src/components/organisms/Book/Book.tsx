@@ -54,7 +54,7 @@ export default function Book() {
           >
             <span className="">CONTENT</span>
           </button>
-          <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
+          {/* <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
             <span className="">CONTENT</span>
           </button>
           <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
@@ -62,7 +62,7 @@ export default function Book() {
           </button>
           <button className="bg-secondary font-bold lg:px-12 py-6 rounded-lg flex text-white hover:bg-primary transition-all delay-[0.1s] items-center justify-center text-[1.8rem]">
             <span className="">CONTENT</span>
-          </button>
+          </button> */}
         </div>
       </div>
 
