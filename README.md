@@ -56,15 +56,15 @@ The application will be available at `http://localhost:3000`.
 Create a `.env.local` file to configure any environment variables for your application. Here is an example template:
 
 ```bash
-
-NEXT_PUBLIC_API_URL=https://your-api-url.com NEXT_PUBLIC_FEATURE_TOGGLE=true
+NEXT_PUBLIC_DEV_URL="http://localhost:8000"
+NEXT_PUBLIC_PROD_URL="https://gutenberg-api-uwq7.onrender.com"
 ```
 ---
 
 ## 🎨 Figma Prototype
 
-The UI of this application has been designed in Figma. You can view the prototype here:  
-[View Figma Prototype  ](https://www.figma.com/design/vCCCxbeKR5dea00s4s9kux/Litalyze?node-id=0-1&t=BI72zyCU7Pii4Vc6-1)
+The UI of this application has been designed in Figma. You can view the prototype here: [View Figma Prototype](https://www.figma.com/design/vCCCxbeKR5dea00s4s9kux/Litalyze?node-id=0-1&t=BI72zyCU7Pii4Vc6-1)
+
 The design includes all screens and user flows for reference, ensuring that the implemented front-end adheres to the visual and functional specifications.
 
 ---
